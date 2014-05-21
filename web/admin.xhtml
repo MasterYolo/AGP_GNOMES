@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>jungle</title>
+    </h:head>
+    <h:body>
+
+        <h:form>
+            <h3>Product List</h3>
+            <c:forEach items="${manager.productList}" var="product">
+                <h:outputLabel for="productAmount" value="Amount: "/>
+                <h:outputText value="${product.amount}"/>&nbsp;
+
+                <h:outputLabel for="productName" value="Name: "/>
+                <h:outputText value="${product.name}"/>&nbsp;
+
+                <h:outputLabel for="productId" value="Id: "/>
+                <h:outputText value="${product.id}"/>&nbsp;
+                <br/>
+            </c:forEach>
+            <hr />
+            <p>
+                <h:outputLabel for="Amount" value="Amount: "/>
+                <h:inputText id="Amount" value="#{manager.amount}"/>
+                <h:outputLabel for="Product" value="Product name: "/>
+                <h:inputText id="Product" value="#{manager.productname}"/>
+                <h:commandButton value="Add" action="#{manager.registerProduct()}"/>
+                <h:commandButton value="Remove" action="#{manager.unregisterProduct()}"/>
+                <h:commandButton value="Remove amount" action="#{manager.unregisterProductAmount()}"/>
+                <h:commandButton value="Update" action="#{manager.updateProductList()}"/>
+            </p>
+            <hr />
+            <h3>BanHammer!</h3>
+            <c:forEach items="${manager.accountList}" var="account">
+                <h:outputLabel for="username" value="Username: "/>
+                <h:outputText value="${account.username}"/>&nbsp;
+                <br/>
+            </c:forEach>
+            <p>
+                <h:outputLabel for="Uname" value="Username: "/>
+                <h:inputText id="Uname" value="#{manager.username}"/>
+                <h:commandButton value="Ban" action="#{manager.banHammer}"/>
+                <h:commandButton value="Update" action="#{manager.updateAccountList()}"/>
+            </p>
+            <hr/>
+            <h:commandButton value="Logout" action="login.xhtml"/>
+        </h:form>
+
+    </h:body>
+</html>
+

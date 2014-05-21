@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Welcome to the jungle</title>
+    </h:head>
+    <h:body>
+
+        <h:form>
+            <h3>Current account</h3>
+            <p>
+                <h:outputLabel for="Account" rendered="#{manager.adminStatus}">
+                    <script>
+                        {alert("Welcome Admin!");}
+                        {window.location.href="admin.xhtml";}
+                    </script>
+                </h:outputLabel>
+                <h:outputLabel for="Account" rendered="#{manager.loggedInStatus }">
+                    <script>
+                        {alert("Welcome User!");}
+                        {window.location.href="customer.xhtml";}
+                    </script>
+                </h:outputLabel>
+                <h:outputLabel for="Account" rendered="#{manager.userAlreadyExistsStatus }">
+                    <script>{alert("Username already exists!");}</script>
+                </h:outputLabel>
+                
+                <h:outputLabel for="Account" rendered="#{manager.registrationSuccessfulStatus }">
+                    <script>{alert("User registered!");}</script>
+                </h:outputLabel>
+                
+                <h:outputLabel for="Account" rendered="#{manager.bannedStatus}">
+                    <script>{alert("YOU HAVE BEEN BANNED! GO AWAY! YOU DIRTY SCUM, YARR!");}</script>
+                </h:outputLabel>
+                
+                <h:outputText id="Account" value="#{manager.account.username}"/>
+            </p>
+            <h3>Login or register you Scum!</h3>
+            <p>
+                
+                <h:outputLabel for="Username" value="Username: "/>
+                <h:inputText id="Username" value="#{manager.username}"/>
+                <h:outputLabel for="Password" value="Password: "/>
+                <h:inputSecret  id="Password" value="#{manager.pass}"  />
+            </p>
+            <p>
+                <h:commandButton value="Login" action="#{manager.login()}" />
+                <h:commandButton value="Register" action="#{manager.register()}" />
+            </p>
+            <hr/>
+        </h:form>
+
+    </h:body>
+</html>
+
